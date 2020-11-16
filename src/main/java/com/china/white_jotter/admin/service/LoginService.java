@@ -8,4 +8,10 @@ import com.china.white_jotter.admin.entity.Login;
  */
 public interface LoginService {
     boolean login(Login login);
+
+    boolean isExist(String username);
+
+    void add(Login login);
+
+    Login getByUserName(String userName);
 }

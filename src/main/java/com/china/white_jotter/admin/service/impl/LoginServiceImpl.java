@@ -25,10 +25,36 @@ public class LoginServiceImpl implements LoginService {
         criteria.andUsernameEqualTo(login.getUsername());
         criteria.andPasswordEqualTo(login.getPassword());
         List list = loginMapper.selectByExample(example);
-        if (list.size()>0){
+        if (list.size() > 0) {
             return true;
         }
         return false;
 
+    }
+
+    @Override
+    public boolean isExist(String username) {
+        LoginExample example = new LoginExample();
+        LoginExample.Criteria criteria = example.createCriteria();
+        criteria.andUsernameEqualTo(username);
+        List list = loginMapper.selectByExample(example);
+        if (list.size() == 0) {
+            return false;
+        }
+        return true;
+    }
+
+    @Override
+    public void add(Login login) {
+        loginMapper.insert(login);
+    }
+
+    @Override
+    public Login getByUserName(String userName) {
+        LoginExample example = new LoginExample();
+        LoginExample.Criteria criteria = example.createCriteria();
+        criteria.andUsernameEqualTo(userName);
+        List<Login> list = loginMapper.selectByExample(example);
+        return list.get(0);
     }
 }
