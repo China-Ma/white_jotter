@@ -1,5 +1,7 @@
 package com.china.white_jotter.admin.entity;
 
+import java.util.List;
+
 public class AdminMenu {
     private Integer id;
 
@@ -14,6 +16,16 @@ public class AdminMenu {
     private String component;
 
     private Integer parentId;
+
+    private List childs;
+
+    public List getChilds() {
+        return childs;
+    }
+
+    public void setChilds(List childs) {
+        this.childs = childs;
+    }
 
     public Integer getId() {
         return id;

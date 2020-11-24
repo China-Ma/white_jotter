@@ -3,8 +3,10 @@ package com.china.white_jotter.admin.mapper;
 import com.china.white_jotter.admin.entity.AdminRoleMenu;
 import com.china.white_jotter.admin.entity.AdminRoleMenuExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+@Mapper
 public interface AdminRoleMenuMapper {
     long countByExample(AdminRoleMenuExample example);
 
