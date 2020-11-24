@@ -10,6 +10,7 @@ import org.apache.shiro.crypto.hash.SimpleHash;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.util.HtmlUtils;
 
@@ -39,7 +40,7 @@ public class AdminController {
         Subject subject = SecurityUtils.getSubject();
         subject.getSession().setTimeout(10000);
         UsernamePasswordToken u = new UsernamePasswordToken(username,login.getPassword());
-
+        u.setRememberMe(true);
         try{
             subject.login(u);
             return new Result(login);
@@ -79,5 +80,19 @@ public class AdminController {
         loginService.add(login);
 
         return new Result(login);
+    }
+
+    @RequestMapping("/api/logout")
+    public Result logout(){
+
+        Subject subject = SecurityUtils.getSubject();
+        subject.logout();
+
+        return new Result(200,"成功登出");
+    }
+
+    @RequestMapping("/api/authentication")
+    public String authentication(){
+        return "身份验证成功";
     }
 }

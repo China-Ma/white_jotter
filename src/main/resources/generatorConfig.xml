@@ -48,8 +48,10 @@
             <property name="enableSubPackages" value="false" />
         </javaClientGenerator>
         <!-- 指定数据库表 -->
-        <table tableName="login"></table>
-        <!--<table tableName="category"></table>-->
+        <table tableName="admin_menu"></table>
+        <table tableName="admin_role"></table>
+        <table tableName="admin_role_menu"></table>
+        <table tableName="admin_user_role"></table>
     </context>
 </generatorConfiguration>
 
